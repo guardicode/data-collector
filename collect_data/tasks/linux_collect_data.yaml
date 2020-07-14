@@ -1,0 +1,45 @@
+---
+- set_fact:
+     all_linux_process: ""
+     all_linux_net: ""
+
+- debug: var=hostvars[inventory_hostname]['ansible_hostname']
+- debug: var=hostvars[inventory_hostname]['ansible_facts']['interfaces']
+- debug: var=hostvars[inventory_hostname].ansible_distribution
+
+- name: Gather facts on listening ports
+  listen_ports_facts:
+
+- name: List TCP ports
+  debug:
+    msg: "{{ ansible_facts.tcp_listen  }}"
+
+- name: List UDP ports
+  debug:
+    msg: "{{ ansible_facts.udp_listen | map(attribute='port') | sort | list }}"
+
+- name: List all ports
+  set_fact:
+     all_linux_net: "{{ (ansible_facts.tcp_listen + ansible_facts.udp_listen) }}"
+
+- name: Get runnig process for linux
+  shell: ps -A
+  register: all_linux_process
+
+- debug:
+    msg: "running process : {{ all_linux_process }}"
+
+- set_fact:
+    server_details:
+       interval_number: "{{ interval_number }}"
+       host: "{{ hostvars[inventory_hostname]['ansible_hostname'] }}"
+       interfaces: "{{ hostvars[inventory_hostname]['ansible_facts']['interfaces'] }}"
+       distribution: "{{ hostvars[inventory_hostname].ansible_distribution }}"
+       process_data: "{{ all_linux_process }}"
+       network_data: "{{ all_linux_net }}"
+
+- set_fact:
+    all_intervals_data: "{{ all_intervals_data|default([]) + [ server_details ] }}"
+
+- pause:
+    minutes: 1

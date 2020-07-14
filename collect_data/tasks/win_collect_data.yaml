@@ -1,0 +1,39 @@
+---
+- set_fact:
+     all_win_process: ""
+     all_win_net: ""
+
+- debug: var=hostvars[inventory_hostname]['ansible_hostname']
+- debug: var=hostvars[inventory_hostname]['ansible_facts']['interfaces']
+- debug: var=hostvars[inventory_hostname].ansible_distribution
+
+
+- name: Get runnig process
+  win_shell: tasklist
+  register: all_win_process
+
+
+- name: Get netstat
+  win_shell: netstat -a -n -o -f -b
+  register: all_win_net
+
+- debug:
+    msg: "running process : {{ all_win_process }}"
+
+- debug:
+    msg: "All network details: {{ all_win_net }}"
+
+- set_fact:
+    server_details:
+       interval_number: "{{ interval_number }}"
+       host: "{{ hostvars[inventory_hostname]['ansible_hostname'] }}"
+       interfaces: "{{ hostvars[inventory_hostname]['ansible_facts']['interfaces'] }}"
+       distribution: "{{ hostvars[inventory_hostname].ansible_distribution }}"
+       process_data: "{{ all_win_process }}"
+       network_data: "{{ all_win_net }}"
+
+- set_fact:
+    all_intervals_data: "{{ all_intervals_data|default([]) + [ server_details ] }}"
+
+- pause:
+    minutes: 1

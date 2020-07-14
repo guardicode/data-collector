@@ -1,0 +1,34 @@
+---
+- hosts: all
+  gather_facts: true
+  tasks:
+
+    - set_fact:
+        all_intervals_data: []
+
+    - include_tasks: linux_collect_data.yaml
+      when: "'windows' not in hostvars[inventory_hostname].ansible_distribution | lower"
+      with_sequence: count="{{ time_running | int }}"
+      loop_control:
+        loop_var: interval_number
+
+    - include_tasks: win_collect_data.yaml
+      when: "'windows' in hostvars[inventory_hostname].ansible_distribution | lower"
+      with_sequence: count="{{ time_running | int }}"
+      loop_control:
+        loop_var: interval_number
+
+
+    - name: create local result dir
+      local_action:
+        module: file
+        path: "{{ result_dir }}"
+        state: directory
+    - local_action: copy content="{{ all_intervals_data }}" dest={{ result_dir }}/result-{{ inventory_hostname }}
+
+- hosts: localhost
+  tasks:
+  - name: Compress results directory
+    archive:
+      path: "{{ result_dir }}"
+      dest: "{{ result_dir }}/results.tgz"
