@@ -2,7 +2,7 @@
 
 This Tool collects data from given list of servers.
 
-Te tool collects  the following information:
+The tool collects  the following information:
 
 - Hostname
 - List of interfaces
@@ -13,6 +13,7 @@ Te tool collects  the following information:
 ## Requirements
 
 ansible => 2.9
+
 sshpass
 
 
