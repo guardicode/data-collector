@@ -29,14 +29,21 @@
 - debug:
     msg: "running process : {{ all_linux_process }}"
 
+- name: Get netstat
+  shell: netstat -nlpa
+  register: network_connections
+
+
 - set_fact:
     server_details:
+       ipv4: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
        interval_number: "{{ interval_number }}"
        host: "{{ hostvars[inventory_hostname]['ansible_hostname'] }}"
        interfaces: "{{ hostvars[inventory_hostname]['ansible_facts']['interfaces'] }}"
        distribution: "{{ hostvars[inventory_hostname].ansible_distribution }}"
        process_data: "{{ all_linux_process }}"
        network_data: "{{ all_linux_net }}"
+       network_connections: "{{ network_connections }}"
 
 - set_fact:
     all_intervals_data: "{{ all_intervals_data|default([]) + [ server_details ] }}"
