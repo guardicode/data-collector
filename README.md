@@ -1,4 +1,5 @@
 #Guardicore data collector
+ 
  This tool collects data from a given list of servers to help you collect the required data for your Segmentation Impact Report
  
 In order to use the open source script, please follow these instructions: 
