@@ -1,10 +1,10 @@
-#Guardicore data collector
+# Guardicore data collector
  
  This tool collects data from a given list of servers to help you collect the required data for your Segmentation Impact Report
  
 In order to use the open source script, please follow these instructions: 
 
-###Instructions
+### Instructions
 
 1. Download this script to a machine with Ansible =>2.9 
     https://github.com/guardicode/data-collector
@@ -14,20 +14,23 @@ In order to use the open source script, please follow these instructions:
 5. The file needs to be sent to Guardicore and we will generate the report. 
 
 
-###Prerequisites:
+### Prerequisites:
+
 1. Ansible => 2.9 on the machine where the script is executed
 2. sshpass on the machine where the script is executed
 3. The credentials allow execution of commands like 'netstat', 'ps'
 
 
-###What it does:
+### What it does:
+
 1. Collects list of running processes
 2. Collects list of interfaces
 3. Collects hostname
 4. Collects dump of active connections (netstat) periodically every 1 minute for 5 minutes
 
 
-###FAQs:
+### FAQs:
+
  Q: Is anything installed on the target machines? 
  
  A: No.
