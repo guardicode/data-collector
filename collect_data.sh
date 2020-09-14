@@ -41,12 +41,12 @@ function get_ip_xor_mask_from_user {
         validated_ip_mask=false
         while ! $validated_ip_mask; do
                 if [ -z "$user_ip_xor_mask" ]; then
-                        read -p "Please enter an ip mask for using to xor the original ips: " user_ip_xor_mask
+                        read -p "Please enter a string that will be used to mask IPs: " user_ip_xor_mask
                         continue
                 fi
                 is_valid_ip=$(echo $user_ip_xor_mask |  grep -oE $ip_regex_validation)
                 if [ -z "$is_valid_ip" ]; then
-                        read -p "Please enter an ip mask for using to xor the original ips: " user_ip_xor_mask
+                        read -p "Please enter a string that will be used to mask IPs: " user_ip_xor_mask
                         continue
                 fi
                 validated_ip_mask=true
@@ -166,7 +166,6 @@ function encrypt_result {
                                 regex_ip=${ip//./\\.}
                                 IFS=. read -r ip_bit1 ip_bit2 ip_bit3 ip_bit4 <<< "$ip"
                                 ip_mask=$(printf "%d.%d.%d.%d\n" "$((mask1 ^ ip_bit1))" "$((mask2 ^ ip_bit2))" "$((mask3 ^ ip_bit3))" "$((mask4 ^ ip_bit4))")
-                                #ip_mask=$(perl -e "use MIME::Base64; print encode_base64('$ip' ^ 'sdfds')")
                                 new_data=$(echo $new_data | sed -e "s/$regex_ip/$ip_mask/g")
                         fi
                 done
