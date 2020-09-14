@@ -25,10 +25,3 @@
         path: "{{ result_dir }}"
         state: directory
     - local_action: copy content="{{ all_intervals_data }}" dest={{ result_dir }}/result-{{ inventory_hostname }}
-
-- hosts: localhost
-  tasks:
-  - name: Compress results directory
-    archive:
-      path: "{{ result_dir }}"
-      dest: "{{ result_dir }}/results.tgz"
