@@ -37,16 +37,18 @@ function get_running_time_from_user {
 }
 
 function get_ip_xor_mask_from_user {
+        default_user_ip_xor_mask="0.0.0.0"
         user_ip_xor_mask=""
         validated_ip_mask=false
+        read -p "Please enter an ip mask for using to xor the original ips, for default (without xor the original ips) press enter: " user_ip_xor_mask
         while ! $validated_ip_mask; do
                 if [ -z "$user_ip_xor_mask" ]; then
-                        read -p "Please enter a string that will be used to mask IPs: " user_ip_xor_mask
+                        user_ip_xor_mask=$default_user_ip_xor_mask
                         continue
                 fi
                 is_valid_ip=$(echo $user_ip_xor_mask |  grep -oE $ip_regex_validation)
                 if [ -z "$is_valid_ip" ]; then
-                        read -p "Please enter a string that will be used to mask IPs: " user_ip_xor_mask
+                        read -p "Please enter an ip mask for using to xor the original ips: " user_ip_xor_mask
                         continue
                 fi
                 validated_ip_mask=true
