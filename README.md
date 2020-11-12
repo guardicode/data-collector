@@ -2,8 +2,8 @@
  
 What can you find here? 
 Tools that collect data from a given list of servers to help you collect the required data for your Attack Surface Report. We have developed two scripts, you can use the one that works best in your environment: 
-A script that collects data from servers using an Ansible machine
-PsExec script to collect data from servers 
+##### 1. A script that collects data from servers using an Ansible machine
+##### 2. PsExec script to collect data from servers 
  
 In order to use the open source scripts, please follow these instructions: 
 
