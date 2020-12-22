@@ -38,7 +38,7 @@ In order to use the open source script, please follow these instructions:
 - *Recommendation- 7zip installed in the default path (C:\Program Files\7-Zip\7z.exe), will skip zipping results folder otherwise
 
 **Remote Machines**
-- Firewall “File and printer sharing” is enabled (Port 445 open and network accessible from Champion Machine)
+- Firewall “File and printer sharing” is enabled (Port 445 open and network accessible from Champion Machine) - if you see this error msg: the handle is invalid, you probably  did not enable file and printer sharing on the champion or remote machines
 - $admin share set up correctly to provide access to its \Windows\ folder (normally enabled on Windows machines)
 
 
@@ -50,6 +50,8 @@ In order to use the open source script, please follow these instructions:
 3. Collects hostname
 4. Collects list of listening ports
 5. Collects dump of active connections (netstat) periodically every 1 minute for 5 minutes
+
+
 
 
 ### FAQs:
