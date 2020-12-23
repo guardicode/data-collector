@@ -13,7 +13,7 @@ In order to use the open source script, please follow these instructions:
 4. The script will execute for a few min and will create an output tar.gz or zip file.
 5. Share the file with Guardicore so we will generate the report. 
 
-
+Instruction video  for PsExec script: https://share.descript.com/view/foKKRaU1qQy 
 
 ### Prerequisites:
 
