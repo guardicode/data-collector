@@ -10,6 +10,7 @@ PsExec script to collect data from servers
 In order to use the open source scripts, please follow these instructions: 
 
 ## Instructions for Ansible Script:
+Instructions Video: https://share.descript.com/view/N0lWGVy7pOT
 
 1. Download this script to a machine with Ansible =>2.9 
     https://github.com/guardicode/data-collector
@@ -34,6 +35,7 @@ In order to use the open source scripts, please follow these instructions:
 4. Collects dump of active connections (netstat) periodically every 1 minute for 5 minutes
 
 ## Instructions for PsExec
+Instructions Video: https://share.descript.com/view/foKKRaU1qQy
 
 1. Download this script to a machine with access to the required machines  https://github.com/guardicode/data-collector/tree/master/PsExec
 2. Save a list of IPs, Username and Password in the .ini file as shown in the example (ip,username,password).
