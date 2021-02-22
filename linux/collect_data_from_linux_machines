@@ -1,0 +1,34 @@
+#!/bin/bash
+
+FILE1=/tmp/gc-data-collection
+FILE2=/tmp/gc-data-collection/results
+if [ ! -d "$FILE2" ]; then
+  if [ ! -d "$FILE1" ]; then
+      mkdir $FILE1
+      mkdir $FILE2
+  else
+      mkdir $FILE2
+  fi
+fi
+
+HOSTNAME=$(hostname)
+
+echo "[" > /tmp/gc-data-collection/results/output-$HOSTNAME.txt
+echo "{hostname:$(hostname)}," >> /tmp/gc-data-collection/results/output-$HOSTNAME.txt
+
+echo "{interfaces:$(netstat -i)}," >> /tmp/gc-data-collection/results/output-$HOSTNAME.txt
+
+echo "{ips:$(hostname -I)}," >> /tmp/gc-data-collection/results/output-$HOSTNAME.txt
+
+echo "{network_interfaces: $(ifconfig -a)}," >> /tmp/gc-data-collection/results/output-$HOSTNAME.txt
+
+echo "{processes: $(ps aux)}," >> /tmp/gc-data-collection/results/output-$HOSTNAME.txt
+
+echo "{listening ports: $(netstat -tulnp)}," >> /tmp/gc-data-collection/results/output-$HOSTNAME.txt
+
+for i in {1..5}
+do
+  echo "{established connections $i: $(netstat -tunp)}," >> /tmp/gc-data-collection/results/output-$HOSTNAME.txt
+  sleep 60s
+done
+echo "]" >> /tmp/gc-data-collection/results/output-$HOSTNAME.txt
