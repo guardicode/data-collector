@@ -41,7 +41,7 @@ Instructions Video: https://share.descript.com/view/foKKRaU1qQy
 2. Save a list of IPs, Username and Password in the .ini file as shown in the example (ip,username,password).
 - *To use the default username and password from step 3, write "default" instead of the username\password (example in .ini file)
 3. Change directory in the CMD to the root folder of the script and execute the script. When prompted, follow the instructions to provide default username and password. 
-4. The script will execute for a few min and will create an output tar.gz or zip file.
+4. The script will execute for a few min and will create an output a zip file.
 5. Share the file with Guardicore so we will generate the report. 
 
 ### Prerequisites
