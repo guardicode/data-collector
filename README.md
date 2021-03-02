@@ -9,7 +9,7 @@ PsExec script to collect data from servers
  
 In order to use the open source scripts, please follow these instructions: 
 
-## Instructions for Ansible Script:
+## Instructions for Ansible Script (Windows and Linux - Windows servers it's required to open WINRM ports):
 Instructions Video: https://share.descript.com/view/N0lWGVy7pOT
 
 1. Download this script to a machine with Ansible =>2.9 
