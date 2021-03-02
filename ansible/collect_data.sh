@@ -186,4 +186,4 @@ echo "Starting to collect data ..."
 echo "ansible-playbook $running_dir/collect_data/tasks/main.yml -i $COLLECT_DATA_INVENTORY_FILE -e result_dir=$RESULTS_DIR time_running=$SAMPLE_RUNNING_TIME" --forks=15
 ansible-playbook $running_dir/collect_data/tasks/main.yml -i $COLLECT_DATA_INVENTORY_FILE -e "result_dir=$RESULTS_DIR time_running=$SAMPLE_RUNNING_TIME" --forks=15
 encrypt_result
-tar -cvf $RESULTS_DIR/results.tar $RESULTS_DIR
+tar -cvf $RESULTS_DIR/results.tar $RESULTS_DIR --exclude="servers_inventory"
