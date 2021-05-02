@@ -77,8 +77,8 @@ function check_prerequisites {
                 echo "Got error while checking Ansible version, please make sure you have Ansible and Python installed"
                 exit 1
         fi
-        is_ansible_version_valid=$(awk 'BEGIN {print ('"$ansible_version"' >= '2.9') ? "true" : "false" }')
-        if [ "$is_ansible_version_valid" != "true" ]; then
+        is_ansible_version_valid=$(python -c "from packaging import version; print(version.parse('$ansible_version') >= version.parse('2.9'))")
+        if [ "$is_ansible_version_valid" != "True" ]; then
                 echo "Ansible => 2.9 is needed, please upgrade your ansible version."
                 exit 1
         fi
