@@ -11,7 +11,7 @@ In order to use the open source script, please follow these instructions:
     * To use the default username and password from step 3, write "default" instead of the username\password (example in .ini file)
 3. Change directory in the CMD to the root folder of the script and execute the script. When prompted, follow the instructions to provide default username and password. 
 4. The script will execute for a few min and will create an output tar.gz or zip file.
-5. Share the file with Guardicore so we will generate the report. 
+5. Please password protect the file you send via email to: **risk_reduction@guardicore.com** without the password! We will reach back to you in order to receive the PW via SMS / secure msg app.
 
 Instruction video  for PsExec script: https://share.descript.com/view/foKKRaU1qQy 
 
